@@ -161,7 +161,7 @@
                 width: 100%;
                 border-collapse: collapse;
                 margin-top: 10px;
-                font-size: 7pt;
+                font-size: 8pt;
             }
             .approvals-table th,
             .approvals-table td {
@@ -518,7 +518,7 @@
             document.querySelectorAll('.page').forEach(fillPage);
 
             function renderRow(a) {
-                const obs = a.obs.replace(/\./g, '.<br>');
+                const obs = a.obs;
                 return `<tr>
         <td class="auth">${a.auth}</td>
         <td class="obs">${obs}<span class="ts">${a.ts}</span></td>
