@@ -34,8 +34,8 @@ function sanitizeFilename(name) {
         });
 
         // SANITIZE FILENAME
-        const safeAppNo = sanitizeFilename(data.application_no || 'SAMPLE');
-        const outputPath = path.join(__dirname, 'output', `WL-${safeAppNo}.pdf`);
+        const safeAppNo = (data.application_no || 'SAMPLE').replace(/[\/\\]/g, '-');
+        const outputPath = `output/WL-${safeAppNo}.pdf`;
 
         fs.mkdirSync(path.dirname(outputPath), { recursive: true });
         fs.writeFileSync(outputPath, pdfBuffer);

@@ -1,0 +1,15 @@
+   <div style="position: absolute; top: 10mm; right: 15mm; z-index: 10">
+                <canvas id="barcode"></canvas>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bwip-js@4.2.0/dist/bwip-js.min.js"></script>
+            <script>
+                bwipjs.toCanvas(document.getElementById('barcode'), {
+                    bcid: 'code128',
+                    text: 'SAN / 809 / 2017',
+                    scale: 2,
+                    height: 8,
+                    includetext: true,
+                    textxalign: 'center',
+                });
+            </script>
