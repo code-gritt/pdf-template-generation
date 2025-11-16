@@ -50,16 +50,18 @@
                 gap: 8px;
                 font-size: 9pt;
                 margin-bottom: 8px;
-                position: relative;
             }
             .header-top {
                 display: flex;
-                justify-content: center;
+                justify-content: center; /* center the crest */
                 align-items: flex-start;
                 width: 100%;
+                position: relative; /* to position page-info absolutely */
             }
+
             .crest {
                 text-align: center;
+                flex: 1;
             }
             .kingdom {
                 color: #fa301e;
@@ -75,16 +77,18 @@
                 margin: 0 auto 4px;
             }
             .page-info {
-                font-size: 10pt;
-                text-align: right;
-                line-height: 1.1;
-                position: absolute;
+                position: absolute; /* keep it top-right without affecting crest */
                 top: 0;
                 right: 0;
+                text-align: right;
+                line-height: 1.1;
             }
             .cpo-code {
                 font-size: 7pt;
                 margin-top: 10px;
+            }
+            .spacer {
+                flex: 1;
             }
 
             .bottom-row {
@@ -186,23 +190,34 @@
                 font-size: 8pt;
                 color: #333;
             }
-            .external {
+
+            /* === FOOTER (exact match with image) === */
+            .page-bottom {
+                position: absolute;
+                bottom: 15mm;
+                left: 12mm;
+                right: 12mm;
                 font-size: 7.5pt;
-                margin-top: 6px;
-                text-align: center;
                 line-height: 1.3;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
             }
-            .safety {
-                margin-top: 4px;
+            .page-bottom .left {
+                flex: 1;
+                text-align: left;
+            }
+            .page-bottom .right {
+                flex: 0 0 150px;
                 text-align: right;
-                font-size: 8pt;
             }
-            .safety input {
+            .page-bottom input {
                 width: 140px;
                 border: none;
                 border-bottom: 1px solid #000;
                 background: transparent;
-                font-size: 8pt;
+                font-size: 7.5pt;
+                padding: 0 2px;
             }
 
             .constant-footer {
@@ -210,20 +225,31 @@
                 bottom: 0;
                 left: 0;
                 right: 0;
-                text-align: center;
                 font-size: 7.5pt;
-                padding: 5px;
-                background: white;
+                line-height: 1.3;
+                background: #fff;
                 border-top: 1px solid #000;
-                line-height: 1.2;
+                padding: 3px 12mm;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
             }
-
-            .pg-num{
-                font-weight: bold;
+            .constant-footer .left {
+                flex: 1;
+                text-align: left;
             }
-
-            .pg-total{
-                font-weight: bold;
+            .constant-footer .right {
+                flex: 0 0 150px;
+                text-align: right;
+            }
+            .constant-footer input {
+                width: 140px;
+                border: none;
+                border-bottom: 1px solid #000;
+                background: transparent;
+                font-size: 7.5pt;
+                padding: 0 2px;
             }
 
             @media print {
@@ -237,11 +263,104 @@
         </style>
     </head>
     <body>
-        <!-- ==================== PAGE 1 ==================== -->
-        <div class="page">
+        <!-- ==================== DATA (Replace with API) ==================== -->
+        <script>
+            const data = {
+                wayleave_no: 'SAN / 809 / 2017',
+                nap_block: 'Block:450',
+                permission_no: 'None',
+                permission_date: 'NA',
+                applicant_name: 'REJI MANAYSERIYIL GOPINATHAN',
+                organization_ref: 'SEPPD',
+                application_date: '19/12/2017',
+                responsible_officer: 'WAA/RMG',
+                commencement_date: '30/12/2017',
+                contractor_name: 'TERM CONTRACTOR',
+                completion_date: '31/07/2018',
+                location_of_works: 'H.NO.2184, ROAD 5060, BLOCK 450, MAQSHA',
+                work_description: '643-450-2017',
+                work_type: 'SEWER CONNECTION',
+                roads: '5060',
+                special_notes: '',
+                printed_by: 'TASAREEH ADMIN',
+                print_timestamp: '15/06/2025 12:50:43 PM',
+                total_pages: 3,
+                cpo_code: 'CPO-F-002',
+                cpo_rev: 'Rev: 04',
+                cpo_date: 'May/2010',
+                approvals: [
+                    {
+                        auth: 'ROADS PROJ. & MAINTENANCE DIRECTORATE (RPMD)',
+                        obs: 'Nominated contractor/works supervisor to contact and liaise with Roads DPCU (Telephone 17615675 or 17615714) between 7AM to 8:30AM prior to start of any works at site. Conditions of Code of Practice for Services Installations and CPO arrangements of services in Public Roads corridor are to be strictly observed. If any deviation from approved corridor is required for whatsoever reason, obtain additional written approval from Director, RPMD before start of work. For unsurfaced roads not built yet to formation level, Utility would either wait or lay services at their risk and must bear responsibility for protection/relocation/lowering/raising etc if so needed during future roads works.',
+                        ts: '- 24/12/2017 07:55 AM',
+                        app: 'MOHAMMED ZAINUL ABEDIN- RD',
+                        status: 'Approved',
+                    },
+                    {
+                        auth: 'ROADS PLAN. & DESIGN DIR. (RPDD)',
+                        obs: 'No Objection.',
+                        ts: '- 19/12/2017 01:40 PM',
+                        app: 'S .V. Murali Mohan',
+                        status: 'Approved',
+                    },
+                    {
+                        auth: 'SANITARY ENGINEERING DIRECTORATES (TSE)',
+                        obs: 'No objection as TSE line is not available in the proposed location. Please contact CPO for any future developments. Please contact for any consultation on every Monday for more details at TSE office Salmabad from 8.00am to 01.00pm.',
+                        ts: '- 21/12/2017 07:54 AM',
+                        app: 'Sideeqa Aljazeery',
+                        status: 'Approved',
+                    },
+                    {
+                        auth: 'Damage Prevention Section @ Electricity & Water Authority',
+                        obs: 'Work supervisor to collect up-dated services data from DPS-E&W. Excavation in vicinity of cables to be done manually and re-instated to original condition. Pipes/Ducts/Chambers to be placed clear of same. CCC required. Phone No. 17993578.',
+                        ts: '- 24/12/2017 07:39 AM',
+                        app: 'S.K.Mahalingam',
+                        status: 'Approved',
+                    },
+                    {
+                        auth: 'Electricity Planning and Projects Directorate',
+                        obs: 'No Objection',
+                        ts: '- 27/12/2017 03:07 PM',
+                        app: 'Khadeejeh S Jaffar',
+                        status: 'Approved',
+                    },
+                    {
+                        auth: 'Water Planning and Projects Directorate',
+                        obs: 'No Objection',
+                        ts: '- 19/12/2017 11:55 AM',
+                        app: 'Prakash Babu Kotakkatt',
+                        status: 'Approved',
+                    },
+                    {
+                        auth: 'WATER DISTRIBUTION DIRECTORATE',
+                        obs: '1. Existing and proposed water installation details furnished.<br>2. CPO corridor allocation / approved code of practice to follow.<br>3. All existing SV / FH Boxes / Markers to be adjusted to new levels.<br>4. Contact DPS (Water :Mr. Rajee Ibraham on 17993578 ) for existing water network prior to start of work.<br>5. Horizontal and vertical clearance should be provided as per standards whenever the conflict arises.<br>6. The vertical alignment of sewer lines should always be lower than the water lines by a minimum of 300mm.<br>7. No diversion will be made to accommodate chambers or connections.',
+                        ts: '- 19/12/2017 10:23 AM',
+                        app: 'Ehsan BinAli Khaifi',
+                        status: 'Approved',
+                    },
+                    {
+                        auth: 'TELECOM',
+                        obs: "(1) No objection (2) Proposed work should utilize the applying utility corridor as per the Code of Practice. (3) Adhere to the precautionary measures in accordance to TRA's Guidelines for works in close proximity to telecoms infrastructure. (4) No work within the telecoms corridor is permitted. (5) Call TRA on 81188 for assistance or in case of damaged telecoms plant.",
+                        ts: '- 20/12/2017 12:19 PM',
+                        app: 'Khalifa Althawadi',
+                        status: 'Approved',
+                    },
+                    { auth: 'MUNICIPALITY', obs: '', ts: '', app: '', status: '' },
+                    {
+                        auth: 'MINISTRY OF INTERIOR GENERAL DIRECTORATE OF TRAFFIC',
+                        obs: '',
+                        ts: '',
+                        app: '',
+                        status: '',
+                    },
+                ],
+            };
+        </script>
+
+        <!-- ==================== PAGE TEMPLATE (REPEATED) ==================== -->
+        <div class="page" id="template" style="display: none">
             <div class="watermark">CLEARED</div>
 
-            <!-- Header (identical on every page) -->
             <div class="header">
                 <div class="header-top">
                     <div class="crest">
@@ -250,7 +369,7 @@
                     </div>
                     <div class="page-info">
                         <span class="pg-num">1</span> of <span class="pg-total">3</span><br />
-                        <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
+                        <div class="cpo-code"></div>
                     </div>
                 </div>
 
@@ -261,124 +380,19 @@
                         </div>
                         <div class="box">
                             <div class="box-title">PLANNING PERMISSION</div>
-                            <div>NO: <span class="perm-no">None</span></div>
-                            <div>DATE: <span class="perm-date">NA</span></div>
+                            <div>NO: <span class="perm-no"></span></div>
+                            <div>DATE: <span class="perm-date"></span></div>
                         </div>
                     </div>
                     <div class="ewa">
                         <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
                         <div class="box">
                             <div class="box-title">WAYLEAVE NO</div>
-                            <div class="wayleave-no">SAN / 809 / 2017</div>
+                            <div class="wayleave-no"></div>
                         </div>
                         <div class="box">
                             <div class="box-title">N.A.P BLOCK</div>
-                            <div>Block:450</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="app-title">APPLICATION FOR WAYLEAVE APPROVAL FOR WORKS</div>
-
-            <!-- Form table (same data on every page) -->
-            <table class="form-table">
-                <tr>
-                    <td class="label">APPLICANT NAME</td>
-                    <td colspan="3" class="wide">REJI MANAYSERIYIL GOPINATHAN</td>
-                </tr>
-                <tr>
-                    <td class="label">ORGANIZATION REF</td>
-                    <td>SEPPD</td>
-                    <td class="label">DATE OF APPLICATION</td>
-                    <td>19/12/2017</td>
-                </tr>
-                <tr>
-                    <td class="label">RESPONSIBLE OFFICER</td>
-                    <td>WAA/RMG</td>
-                    <td class="label">DATE OF COMMENCEMENT</td>
-                    <td>30/12/2017</td>
-                </tr>
-                <tr>
-                    <td class="label">CONTRACTOR</td>
-                    <td>TERM CONTRACTOR</td>
-                    <td class="label">EXPECTED COMPLETION DATE</td>
-                    <td>31/07/2018</td>
-                </tr>
-                <tr>
-                    <td class="label">LOCATION OF WORKS</td>
-                    <td colspan="3" class="wide">H.NO.2184, ROAD 5060, BLOCK 450, MAQSHA</td>
-                </tr>
-                <tr>
-                    <td class="label">WIDTH & DESCRIPTION OF WORKS</td>
-                    <td colspan="3" class="wide"><b>SEWER CONNECTION</b> 643-450-2017</td>
-                </tr>
-                <tr>
-                    <td class="label">ROADS</td>
-                    <td colspan="3" class="wide">5060</td>
-                </tr>
-                <tr>
-                    <td class="label">SPECIAL NOTES</td>
-                    <td colspan="3" class="wide"></td>
-                </tr>
-            </table>
-
-            <!-- Approvals – 4 rows on page 1 -->
-            <table class="approvals-table">
-                <thead>
-                    <tr>
-                        <th class="auth">AUTHORITY</th>
-                        <th class="obs">OBSERVATIONS</th>
-                        <th class="app">APPROVED TO PROCEED</th>
-                    </tr>
-                </thead>
-                <tbody id="page1-approvals"></tbody>
-            </table>
-
-            <div class="footer">
-                <div>Printed By : TASAREEH ADMIN</div>
-                <div>15/06/2025 12:50:43 PM</div>
-            </div>
-
-        </div>
-        </div>
-
-        <!-- ==================== PAGE 2 ==================== -->
-        <div class="page">
-            <div class="watermark">CLEARED</div>
-
-            <div class="header">
-                <div class="header-top">
-                    <div class="crest">
-                        <div class="kingdom">KINGDOM OF BAHRAIN</div>
-                        <div class="crest-img"></div>
-                    </div>
-                    <div class="page-info">
-                        <span class="pg-num">2</span> of <span class="pg-total">3</span><br />
-                        <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
-                    </div>
-                </div>
-
-                <div class="bottom-row">
-                    <div class="ministry">
-                        <div class="ministry-title">
-                            MINISTRY OF WORKS,<br />MUNICIPALITIES AFFAIRS<br />& URBAN PLANNING
-                        </div>
-                        <div class="box">
-                            <div class="box-title">PLANNING PERMISSION</div>
-                            <div>NO: <span class="perm-no">None</span></div>
-                            <div>DATE: <span class="perm-date">NA</span></div>
-                        </div>
-                    </div>
-                    <div class="ewa">
-                        <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
-                        <div class="box">
-                            <div class="box-title">WAYLEAVE NO</div>
-                            <div class="wayleave-no">SAN / 809 / 2017</div>
-                        </div>
-                        <div class="box">
-                            <div class="box-title">N.A.P BLOCK</div>
-                            <div>Block:450</div>
+                            <div class="nap-block"></div>
                         </div>
                     </div>
                 </div>
@@ -389,45 +403,46 @@
             <table class="form-table">
                 <tr>
                     <td class="label">APPLICANT NAME</td>
-                    <td colspan="3" class="wide">REJI MANAYSERIYIL GOPINATHAN</td>
+                    <td colspan="3" class="wide applicant-name"></td>
                 </tr>
                 <tr>
                     <td class="label">ORGANIZATION REF</td>
-                    <td>SEPPD</td>
+                    <td class="org-ref"></td>
                     <td class="label">DATE OF APPLICATION</td>
-                    <td>19/12/2017</td>
+                    <td class="app-date"></td>
                 </tr>
                 <tr>
                     <td class="label">RESPONSIBLE OFFICER</td>
-                    <td>WAA/RMG</td>
+                    <td class="resp-officer"></td>
                     <td class="label">DATE OF COMMENCEMENT</td>
-                    <td>30/12/2017</td>
+                    <td class="comm-date"></td>
                 </tr>
                 <tr>
                     <td class="label">CONTRACTOR</td>
-                    <td>TERM CONTRACTOR</td>
+                    <td class="contractor"></td>
                     <td class="label">EXPECTED COMPLETION DATE</td>
-                    <td>31/07/2018</td>
+                    <td class="comp-date"></td>
                 </tr>
                 <tr>
                     <td class="label">LOCATION OF WORKS</td>
-                    <td colspan="3" class="wide">H.NO.2184, ROAD 5060, BLOCK 450, MAQSHA</td>
+                    <td colspan="3" class="wide location"></td>
                 </tr>
                 <tr>
                     <td class="label">WIDTH & DESCRIPTION OF WORKS</td>
-                    <td colspan="3" class="wide"><b>SEWER CONNECTION</b> 643-450-2017</td>
+                    <td colspan="3" class="wide">
+                        <b class="work-type"></b> <span class="work-desc"></span>
+                    </td>
                 </tr>
                 <tr>
                     <td class="label">ROADS</td>
-                    <td colspan="3" class="wide">5060</td>
+                    <td colspan="3" class="wide roads"></td>
                 </tr>
                 <tr>
                     <td class="label">SPECIAL NOTES</td>
-                    <td colspan="3" class="wide"></td>
+                    <td colspan="3" class="wide special-notes"></td>
                 </tr>
             </table>
 
-            <!-- Approvals – 4 rows on page 2 -->
             <table class="approvals-table">
                 <thead>
                     <tr>
@@ -436,227 +451,108 @@
                         <th class="app">APPROVED TO PROCEED</th>
                     </tr>
                 </thead>
-                <tbody id="page2-approvals"></tbody>
+                <tbody class="approvals-body"></tbody>
             </table>
 
             <div class="footer">
-                <div>Printed By : TASAREEH ADMIN</div>
-                <div>15/06/2025 12:50:43 PM</div>
+                <div>Printed By : <span class="printed-by"></span></div>
+                <div class="print-ts"></div>
             </div>
 
-            <div class="external">
-                EXTERNAL AGENCIES WAYLEAVE
+            <!-- Page Bottom Footer (Pages 2 & 3 only) -->
+            <div class="page-bottom">
+                <div class="left">
+                    EXTERNAL AGENCIES WAYLEAVE<br />
+                    CENTRAL PLANNING OFFICE WAYLEAVE COORDINATOR. TEL 17545795 FAX 17545798 EMAIL:
+                    coordinator@bahrain.gov.bh
+                </div>
+                <div class="right">SAFETY CERT. NO. <input type="text" value="" /></div>
             </div>
-            <div class="safety">SAFETY CERT. NO. <input type="text" value="" /></div>
         </div>
 
-        <!-- ==================== PAGE 3 ==================== -->
-        <div class="page">
-            <div class="watermark">CLEARED</div>
+        <!-- Generate 3 Pages -->
+        <div id="pages"></div>
 
-            <div class="header">
-                <div class="header-top">
-                    <div class="crest">
-                        <div class="kingdom">KINGDOM OF BAHRAIN</div>
-                        <div class="crest-img"></div>
-                    </div>
-                    <div class="page-info">
-                        <span class="pg-num">3</span> of <span class="pg-total">3</span><br />
-                        <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
-                    </div>
-                </div>
-
-                <div class="bottom-row">
-                    <div class="ministry">
-                        <div class="ministry-title">
-                            MINISTRY OF WORKS,<br />MUNICIPALITIES AFFAIRS<br />& URBAN PLANNING
-                        </div>
-                        <div class="box">
-                            <div class="box-title">PLANNING PERMISSION</div>
-                            <div>NO: <span class="perm-no">None</span></div>
-                            <div>DATE: <span class="perm-date">NA</span></div>
-                        </div>
-                    </div>
-                    <div class="ewa">
-                        <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
-                        <div class="box">
-                            <div class="box-title">WAYLEAVE NO</div>
-                            <div class="wayleave-no">SAN / 809 / 2017</div>
-                        </div>
-                        <div class="box">
-                            <div class="box-title">N.A.P BLOCK</div>
-                            <div>Block:450</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="app-title">APPLICATION FOR WAYLEAVE APPROVAL FOR WORKS</div>
-
-            <table class="form-table">
-                <tr>
-                    <td class="label">APPLICANT NAME</td>
-                    <td colspan="3" class="wide">REJI MANAYSERIYIL GOPINATHAN</td>
-                </tr>
-                <tr>
-                    <td class="label">ORGANIZATION REF</td>
-                    <td>SEPPD</td>
-                    <td class="label">DATE OF APPLICATION</td>
-                    <td>19/12/2017</td>
-                </tr>
-                <tr>
-                    <td class="label">RESPONSIBLE OFFICER</td>
-                    <td>WAA/RMG</td>
-                    <td class="label">DATE OF COMMENCEMENT</td>
-                    <td>30/12/2017</td>
-                </tr>
-                <tr>
-                    <td class="label">CONTRACTOR</td>
-                    <td>TERM CONTRACTOR</td>
-                    <td class="label">EXPECTED COMPLETION DATE</td>
-                    <td>31/07/2018</td>
-                </tr>
-                <tr>
-                    <td class="label">LOCATION OF WORKS</td>
-                    <td colspan="3" class="wide">H.NO.2184, ROAD 5060, BLOCK 450, MAQSHA</td>
-                </tr>
-                <tr>
-                    <td class="label">WIDTH & DESCRIPTION OF WORKS</td>
-                    <td colspan="3" class="wide"><b>SEWER CONNECTION</b> 643-450-2017</td>
-                </tr>
-                <tr>
-                    <td class="label">ROADS</td>
-                    <td colspan="3" class="wide">5060</td>
-                </tr>
-                <tr>
-                    <td class="label">SPECIAL NOTES</td>
-                    <td colspan="3" class="wide"></td>
-                </tr>
-            </table>
-
-            <!-- Approvals – 2 rows on page 3 -->
-            <table class="approvals-table">
-                <thead>
-                    <tr>
-                        <th class="auth">AUTHORITY</th>
-                        <th class="obs">OBSERVATIONS</th>
-                        <th class="app">APPROVED TO PROCEED</th>
-                    </tr>
-                </thead>
-                <tbody id="page3-approvals"></tbody>
-            </table>
-
-            <div class="footer">
-                <div>Printed By : TASAREEH ADMIN</div>
-                <div>15/06/2025 12:50:43 PM</div>
-            </div>
-
-            <div class="external">
-                EXTERNAL AGENCIES WAYLEAVE
-            </div>
-            <div class="safety">SAFETY CERT. NO. <input type="text" value="" /></div>
-        </div>
-
-        <!-- Constant Footer -->
+        <!-- Constant Footer (Always at bottom) -->
         <div class="constant-footer">
-            EXTERNAL AGENCIES WAYLEAVE<br />
-            CENTRAL PLANNING OFFICE WAYLEAVE COORDINATOR. TEL 17545795 FAX 17545798 EMAIL: coordinator@bahrain.gov.bh<br />
-            SAFETY CERT. NO. <input type="text" value="" />
+            <div class="left">
+                EXTERNAL AGENCIES WAYLEAVE<br />
+                CENTRAL PLANNING OFFICE WAYLEAVE COORDINATOR. TEL 17545795 FAX 17545798 EMAIL:
+                coordinator@bahrain.gov.bh
+            </div>
+            <div class="right">SAFETY CERT. NO. <input type="text" value="" /></div>
         </div>
-    </body>
-</html>
 
+        <!-- ==================== RENDER SCRIPT ==================== -->
         <script>
-            /* ---------- DATA ---------- */
-            const approvals = [
-                {
-                    auth: 'ROADS PROJ. & MAINTENANCE DIRECTORATE (RPMD)',
-                    obs: 'Nominated contractor/works supervisor to contact and liaise with Roads DPCU (Telephone 17615675 or 17615714) between 7AM to 8:30AM prior to start of any works at site. Conditions of Code of Practice for Services Installations and CPO arrangements of services in Public Roads corridor are to be strictly observed. If any deviation from approved corridor is required for whatsoever reason, obtain additional written approval from Director, RPMD before start of work. For unsurfaced roads not built yet to formation level, Utility would either wait or lay services at their risk and must bear responsibility for protection/relocation/lowering/raising etc if so needed during future roads works.',
-                    ts: '- 24/12/2017 07:55 AM',
-                    app: 'MOHAMMED ZAINUL ABEDIN- RD',
-                    status: 'Approved',
-                },
-                {
-                    auth: 'ROADS PLAN. & DESIGN DIR. (RPDD)',
-                    obs: 'No Objection.',
-                    ts: '- 19/12/2017 01:40 PM',
-                    app: 'S .V. Murali Mohan',
-                    status: 'Approved',
-                },
-                {
-                    auth: 'SANITARY ENGINEERING DIRECTORATES (TSE)',
-                    obs: 'No objection as TSE line is not available in the proposed location. Please contact CPO for any future developments. Please contact for any consultation on every Monday for more details at TSE office Salmabad from 8.00am to 01.00pm.',
-                    ts: '- 21/12/2017 07:54 AM',
-                    app: 'Sideeqa Aljazeery',
-                    status: 'Approved',
-                },
-                {
-                    auth: 'Damage Prevention Section @ Electricity & Water Authority',
-                    obs: 'Work supervisor to collect up-dated services data from DPS-E&W. Excavation in vicinity of cables to be done manually and re-instated to original condition. Pipes/Ducts/Chambers to be placed clear of same. CCC required. Phone No. 17993578.',
-                    ts: '- 24/12/2017 07:39 AM',
-                    app: 'S.K.Mahalingam',
-                    status: 'Approved',
-                },
-                {
-                    auth: 'Electricity Planning and Projects Directorate',
-                    obs: 'No Objection',
-                    ts: '- 27/12/2017 03:07 PM',
-                    app: 'Khadeejeh S Jaffar',
-                    status: 'Approved',
-                },
-                {
-                    auth: 'Water Planning and Projects Directorate',
-                    obs: 'No Objection',
-                    ts: '- 19/12/2017 11:55 AM',
-                    app: 'Prakash Babu Kotakkatt',
-                    status: 'Approved',
-                },
-                {
-                    auth: 'WATER DISTRIBUTION DIRECTORATE',
-                    obs: '1. Existing and proposed water installation details furnished.<br>2. CPO corridor allocation / approved code of practice to follow.<br>3. All existing SV / FH Boxes / Markers to be adjusted to new levels.<br>4. Contact DPS (Water :Mr. Rajee Ibraham on 17993578 ) for existing water network prior to start of work.<br>5. Horizontal and vertical clearance should be provided as per standards whenever the conflict arises.<br>6. The vertical alignment of sewer lines should always be lower than the water lines by a minimum of 300mm.<br>7. No diversion will be made to accommodate chambers or connections.',
-                    ts: '- 19/12/2017 10:23 AM',
-                    app: 'Ehsan BinAli Khaifi',
-                    status: 'Approved',
-                },
-                {
-                    auth: 'TELECOM',
-                    obs: "(1) No objection (2) Proposed work should utilize the applying utility corridor as per the Code of Practice. (3) Adhere to the precautionary measures in accordance to TRA's Guidelines for works in close proximity to telecoms infrastructure. (4) No work within the telecoms corridor is permitted. (5) Call TRA on 81188 for assistance or in case of damaged telecoms plant.",
-                    ts: '- 20/12/2017 12:19 PM',
-                    app: 'Khalifa Althawadi',
-                    status: 'Approved',
-                },
-                { auth: 'MUNICIPALITY', obs: '', ts: '', app: '', status: '' },
-                {
-                    auth: 'MINISTRY OF INTERIOR GENERAL DIRECTORATE OF TRAFFIC',
-                    obs: '',
-                    ts: '',
-                    app: '',
-                    status: '',
-                },
-            ];
+            const template = document.getElementById('template');
+            const pagesContainer = document.getElementById('pages');
 
-            /* ---------- RENDER ---------- */
-            function row(a) {
+            // Clone and render 3 pages
+            for (let i = 1; i <= 3; i++) {
+                const page = template.cloneNode(true);
+                page.id = `page${i}`;
+                page.style.display = 'block';
+                page.querySelector('.pg-num').textContent = i;
+
+                // Hide page-bottom on page 1
+                if (i === 1) {
+                    page.querySelector('.page-bottom').style.display = 'none';
+                }
+
+                pagesContainer.appendChild(page);
+            }
+
+            // Fill all pages
+            function fillPage(page) {
+                page.querySelector('.perm-no').textContent = data.permission_no;
+                page.querySelector('.perm-date').textContent = data.permission_date;
+                page.querySelector('.wayleave-no').textContent = data.wayleave_no;
+                page.querySelector('.nap-block').textContent = data.nap_block;
+                page.querySelector('.applicant-name').textContent = data.applicant_name;
+                page.querySelector('.org-ref').textContent = data.organization_ref;
+                page.querySelector('.app-date').textContent = data.application_date;
+                page.querySelector('.resp-officer').textContent = data.responsible_officer;
+                page.querySelector('.comm-date').textContent = data.commencement_date;
+                page.querySelector('.contractor').textContent = data.contractor_name;
+                page.querySelector('.comp-date').textContent = data.completion_date;
+                page.querySelector('.location').textContent = data.location_of_works;
+                page.querySelector('.work-type').textContent = data.work_type;
+                page.querySelector('.work-desc').textContent = data.work_description;
+                page.querySelector('.roads').textContent = data.roads;
+                page.querySelector('.special-notes').textContent = data.special_notes;
+                page.querySelector('.printed-by').textContent = data.printed_by;
+                page.querySelector('.print-ts').textContent = data.print_timestamp;
+                page.querySelector(
+                    '.cpo-code'
+                ).innerHTML = `${data.cpo_code}<br>${data.cpo_rev}<br>${data.cpo_date}`;
+                page.querySelector('.pg-total').textContent = data.total_pages;
+            }
+
+            document.querySelectorAll('.page').forEach(fillPage);
+
+            // Render approvals
+            function renderRow(a) {
                 const obs = a.obs.replace(/\./g, '.<br>');
                 return `<tr>
         <td class="auth">${a.auth}</td>
         <td class="obs">${obs}<span class="ts">${a.ts}</span></td>
         <td class="app">${a.app}<br>${a.status}</td>
-    </tr>`;
+      </tr>`;
             }
 
-            /* split exactly like the picture */
-            document.getElementById('page1-approvals').innerHTML = approvals
+            const approvals = data.approvals;
+            document.querySelector('#page1 .approvals-body').innerHTML = approvals
                 .slice(0, 4)
-                .map(row)
+                .map(renderRow)
                 .join('');
-            document.getElementById('page2-approvals').innerHTML = approvals
+            document.querySelector('#page2 .approvals-body').innerHTML = approvals
                 .slice(4, 8)
-                .map(row)
+                .map(renderRow)
                 .join('');
-            document.getElementById('page3-approvals').innerHTML = approvals
+            document.querySelector('#page3 .approvals-body').innerHTML = approvals
                 .slice(8)
-                .map(row)
+                .map(renderRow)
                 .join('');
         </script>
     </body>
