@@ -34,13 +34,29 @@
             }
 
             .top-section {
+                display: grid;
+                grid-template-columns: 35% 1fr 35%;
+                grid-template-rows: auto auto;
+                gap: 8px 0;
+                font-size: 9pt;
+                position: relative;
+                margin-bottom: 8px;
+            }
+            .ministry {
+                grid-column: 1;
+                grid-row: 1 / -1;
+            }
+            .center {
+                grid-column: 2;
+                grid-row: 1;
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
-                margin-bottom: 8px;
-                font-size: 9pt;
-                position: relative;
-                height: 75px;
+            }
+            .ewa {
+                grid-column: 3;
+                grid-row: 1 / -1;
+                text-align: right;
             }
 
             .ministry {
@@ -68,7 +84,6 @@
             }
 
             .crest {
-                width: 30%;
                 text-align: center;
                 position: relative;
             }
@@ -89,7 +104,6 @@
             }
 
             .ewa {
-                width: 35%;
                 text-align: right;
             }
 
@@ -114,9 +128,6 @@
             }
 
             .page-info {
-                position: absolute;
-                top: 0;
-                right: 0;
                 font-size: 8pt;
                 line-height: 1.1;
                 text-align: right;
@@ -286,9 +297,16 @@
                     </div>
                 </div>
 
-                <div class="crest">
-                    <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
-                    <div class="crest-image"></div>
+                <div class="center">
+                    <div class="crest">
+                        <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
+                        <div class="crest-image"></div>
+                    </div>
+
+                    <div class="page-info">
+                        <span id="page1-num">1</span> of <span id="total-pages">3</span><br />
+                        <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
+                    </div>
                 </div>
 
                 <div class="ewa">
@@ -301,11 +319,6 @@
                         <div class="nap-title">N.A.P BLOCK</div>
                         <div>Block:450</div>
                     </div>
-                </div>
-
-                <div class="page-info">
-                    <span id="page1-num">1</span> of <span id="total-pages">3</span><br />
-                    <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
                 </div>
             </div>
 
@@ -404,9 +417,16 @@
                     </div>
                 </div>
 
-                <div class="crest">
-                    <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
-                    <div class="crest-image"></div>
+                <div class="center">
+                    <div class="crest">
+                        <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
+                        <div class="crest-image"></div>
+                    </div>
+
+                    <div class="page-info">
+                        <span id="page2-num">2</span> of <span id="total-pages2">3</span><br />
+                        <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
+                    </div>
                 </div>
 
                 <div class="ewa">
@@ -417,11 +437,6 @@
                         <div class="nap-title">N.A.P BLOCK</div>
                         <div class="nap-block">Block:450</div>
                     </div>
-                </div>
-
-                <div class="page-info">
-                    <span id="page2-num">2</span> of <span id="total-pages2">3</span><br />
-                    <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
                 </div>
             </div>
 
@@ -514,9 +529,16 @@
                     </div>
                 </div>
 
-                <div class="crest">
-                    <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
-                    <div class="crest-image"></div>
+                <div class="center">
+                    <div class="crest">
+                        <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
+                        <div class="crest-image"></div>
+                    </div>
+
+                    <div class="page-info">
+                        <span id="page3-num">3</span> of <span id="total-pages3">3</span><br />
+                        <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
+                    </div>
                 </div>
 
                 <div class="ewa">
@@ -527,11 +549,6 @@
                         <div class="nap-title">N.A.P BLOCK</div>
                         <div class="nap-block">Block:450</div>
                     </div>
-                </div>
-
-                <div class="page-info">
-                    <span id="page3-num">3</span> of <span id="total-pages3">3</span><br />
-                    <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
                 </div>
             </div>
 
