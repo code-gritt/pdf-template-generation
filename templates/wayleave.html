@@ -34,28 +34,30 @@
             }
 
             .top-section {
-                display: grid;
-                grid-template-columns: 35% 1fr 35%;
-                grid-template-rows: auto auto;
-                gap: 8px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
                 font-size: 9pt;
                 position: relative;
                 margin-bottom: 8px;
             }
-            .ministry {
-                grid-column: 1;
-                grid-row: 1 / -1;
-            }
             .center {
-                grid-column: 2;
-                grid-row: 1;
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
+                width: 100%;
+            }
+            .bottom-row {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+            }
+            .ministry {
+                width: 35%;
             }
             .ewa {
-                grid-column: 3;
-                grid-row: 1 / -1;
+                width: 35%;
                 text-align: right;
             }
 
@@ -286,17 +288,6 @@
             <div class="watermark">CLEARED</div>
 
             <div class="top-section">
-                <div class="ministry">
-                    <div class="ministry-title">
-                        MINISTRY OF WORKS,<br />MUNICIPALITIES AFFAIRS<br />& URBAN PLANNING
-                    </div>
-                    <div class="permission-box">
-                        <div class="permission-title">PLANNING PERMISSION</div>
-                        <div>NO: <span id="permission_no">None</span></div>
-                        <div>DATE: <span id="permission_date">NA</span></div>
-                    </div>
-                </div>
-
                 <div class="center">
                     <div class="crest">
                         <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
@@ -309,15 +300,28 @@
                     </div>
                 </div>
 
-                <div class="ewa">
-                    <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
-                    <div class="ewayleave-box">
-                        <div class="ewayleave-title">WAYLEAVE NO</div>
-                        <div id="wayleave_no">SAN / 809 / 2017</div>
+                <div class="bottom-row">
+                    <div class="ministry">
+                        <div class="ministry-title">
+                            MINISTRY OF WORKS,<br />MUNICIPALITIES AFFAIRS<br />& URBAN PLANNING
+                        </div>
+                        <div class="permission-box">
+                            <div class="permission-title">PLANNING PERMISSION</div>
+                            <div>NO: <span id="permission_no">None</span></div>
+                            <div>DATE: <span id="permission_date">NA</span></div>
+                        </div>
                     </div>
-                    <div class="nap-block">
-                        <div class="nap-title">N.A.P BLOCK</div>
-                        <div>Block:450</div>
+
+                    <div class="ewa">
+                        <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
+                        <div class="ewayleave-box">
+                            <div class="ewayleave-title">WAYLEAVE NO</div>
+                            <div id="wayleave_no">SAN / 809 / 2017</div>
+                        </div>
+                        <div class="nap-block">
+                            <div class="nap-title">N.A.P BLOCK</div>
+                            <div>Block:450</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -406,17 +410,6 @@
             <div class="watermark">CLEARED</div>
             <!-- Repeat Header -->
             <div class="top-section">
-                <div class="ministry">
-                    <div class="ministry-title">
-                        MINISTRY OF WORKS, MUNICIPALITIES AFFAIRS & URBAN PLANNING
-                    </div>
-                    <div class="permission-box">
-                        <div class="permission-title">PLANNING PERMISSION</div>
-                        <div>NO: <span id="permission_no2">None</span></div>
-                        <div class="date-field">DATE: <span id="permission_date2">NA</span></div>
-                    </div>
-                </div>
-
                 <div class="center">
                     <div class="crest">
                         <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
@@ -429,13 +422,26 @@
                     </div>
                 </div>
 
-                <div class="ewa">
-                    <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
-                    <div class="ewayleave-box">
-                        <div class="ewayleave-title">WAYLEAVE NO</div>
-                        <div class="ewayleave-number" id="wayleave_no2">SAN / 809 / 2017</div>
-                        <div class="nap-title">N.A.P BLOCK</div>
-                        <div class="nap-block">Block:450</div>
+                <div class="bottom-row">
+                    <div class="ministry">
+                        <div class="ministry-title">
+                            MINISTRY OF WORKS, MUNICIPALITIES AFFAIRS & URBAN PLANNING
+                        </div>
+                        <div class="permission-box">
+                            <div class="permission-title">PLANNING PERMISSION</div>
+                            <div>NO: <span id="permission_no2">None</span></div>
+                            <div class="date-field">DATE: <span id="permission_date2">NA</span></div>
+                        </div>
+                    </div>
+
+                    <div class="ewa">
+                        <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
+                        <div class="ewayleave-box">
+                            <div class="ewayleave-title">WAYLEAVE NO</div>
+                            <div class="ewayleave-number" id="wayleave_no2">SAN / 809 / 2017</div>
+                            <div class="nap-title">N.A.P BLOCK</div>
+                            <div class="nap-block">Block:450</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -518,17 +524,6 @@
             <div class="watermark">CLEARED</div>
             <!-- Repeat Header -->
             <div class="top-section">
-                <div class="ministry">
-                    <div class="ministry-title">
-                        MINISTRY OF WORKS, MUNICIPALITIES AFFAIRS & URBAN PLANNING
-                    </div>
-                    <div class="permission-box">
-                        <div class="permission-title">PLANNING PERMISSION</div>
-                        <div>NO: <span id="permission_no3">None</span></div>
-                        <div class="date-field">DATE: <span id="permission_date3">NA</span></div>
-                    </div>
-                </div>
-
                 <div class="center">
                     <div class="crest">
                         <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
@@ -541,13 +536,26 @@
                     </div>
                 </div>
 
-                <div class="ewa">
-                    <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
-                    <div class="ewayleave-box">
-                        <div class="ewayleave-title">WAYLEAVE NO</div>
-                        <div class="ewayleave-number" id="wayleave_no3">SAN / 809 / 2017</div>
-                        <div class="nap-title">N.A.P BLOCK</div>
-                        <div class="nap-block">Block:450</div>
+                <div class="bottom-row">
+                    <div class="ministry">
+                        <div class="ministry-title">
+                            MINISTRY OF WORKS, MUNICIPALITIES AFFAIRS & URBAN PLANNING
+                        </div>
+                        <div class="permission-box">
+                            <div class="permission-title">PLANNING PERMISSION</div>
+                            <div>NO: <span id="permission_no3">None</span></div>
+                            <div class="date-field">DATE: <span id="permission_date3">NA</span></div>
+                        </div>
+                    </div>
+
+                    <div class="ewa">
+                        <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
+                        <div class="ewayleave-box">
+                            <div class="ewayleave-title">WAYLEAVE NO</div>
+                            <div class="ewayleave-number" id="wayleave_no3">SAN / 809 / 2017</div>
+                            <div class="nap-title">N.A.P BLOCK</div>
+                            <div class="nap-block">Block:450</div>
+                        </div>
                     </div>
                 </div>
             </div>
