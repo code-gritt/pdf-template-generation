@@ -33,13 +33,14 @@
                 page-break-after: avoid;
             }
 
-            .header {
+            .top-section {
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
                 margin-bottom: 8px;
                 font-size: 9pt;
                 position: relative;
+                height: 75px;
             }
 
             .ministry {
@@ -51,6 +52,7 @@
                 font-weight: bold;
                 margin-bottom: 2px;
                 line-height: 1.2;
+                font-size: 9.5pt;
             }
 
             .permission-box {
@@ -68,6 +70,7 @@
             .crest {
                 width: 30%;
                 text-align: center;
+                position: relative;
             }
 
             .kingdom-title {
@@ -93,6 +96,7 @@
             .ewa-title {
                 color: #e0310b;
                 font-weight: bold;
+                font-size: 9.5pt;
             }
 
             .ewayleave-box,
@@ -109,13 +113,18 @@
                 margin-bottom: 2px;
             }
 
-            .cpo-code {
+            .page-info {
                 position: absolute;
                 top: 0;
                 right: 0;
                 font-size: 8pt;
                 line-height: 1.1;
                 text-align: right;
+            }
+
+            .cpo-code {
+                font-size: 7.5pt;
+                margin-top: 2px;
             }
 
             .application-title {
@@ -199,6 +208,7 @@
                 font-style: italic;
                 color: #555;
                 margin-top: 4px;
+                display: block;
             }
 
             .footer {
@@ -245,13 +255,6 @@
                 letter-spacing: 10px;
             }
 
-            .page-number {
-                position: absolute;
-                top: 8mm;
-                right: 12mm;
-                font-size: 9pt;
-            }
-
             .printed-by {
                 font-size: 8pt;
             }
@@ -267,38 +270,42 @@
         </style>
     </head>
     <body>
-        <!-- Page 1 -->
+        <!-- Page 1 - Pixel-perfect match -->
         <div class="page">
             <div class="watermark">CLEARED</div>
 
-            <div class="header">
+            <div class="top-section">
                 <div class="ministry">
                     <div class="ministry-title">
-                        MINISTRY OF WORKS, MUNICIPALITIES AFFAIRS & URBAN PLANNING
+                        MINISTRY OF WORKS,<br />MUNICIPALITIES AFFAIRS<br />& URBAN PLANNING
                     </div>
                     <div class="permission-box">
                         <div class="permission-title">PLANNING PERMISSION</div>
                         <div>NO: <span id="permission_no">None</span></div>
-                        <div class="date-field">DATE: <span id="permission_date">NA</span></div>
+                        <div>DATE: <span id="permission_date">NA</span></div>
                     </div>
                 </div>
 
                 <div class="crest">
                     <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
                     <div class="crest-image"></div>
-                    <div class="page-number">
-                        <span id="page1-num">1</span> of <span id="total-pages">3</span>
-                    </div>
                 </div>
 
                 <div class="ewa">
                     <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
                     <div class="ewayleave-box">
                         <div class="ewayleave-title">WAYLEAVE NO</div>
-                        <div class="ewayleave-number" id="wayleave_no">SAN / 809 / 2017</div>
-                        <div class="nap-title">N.A.P BLOCK</div>
-                        <div class="nap-block">Block:450</div>
+                        <div id="wayleave_no">SAN / 809 / 2017</div>
                     </div>
+                    <div class="nap-block">
+                        <div class="nap-title">N.A.P BLOCK</div>
+                        <div>Block:450</div>
+                    </div>
+                </div>
+
+                <div class="page-info">
+                    <span id="page1-num">1</span> of <span id="total-pages">3</span><br />
+                    <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
                 </div>
             </div>
 
@@ -368,8 +375,8 @@
             <div class="footer">
                 <div class="printed-by">
                     Printed By : <span id="printed_by">TASAREEH ADMIN</span>
-                    <span id="print_timestamp">15/06/2025 12:50:43 PM</span>
                 </div>
+                <div id="print_timestamp">15/06/2025 12:50:43 PM</div>
             </div>
 
             <div class="external">
@@ -381,11 +388,11 @@
             <div class="safety-cert">SAFETY CERT. NO. <input type="text" value="" /></div>
         </div>
 
-        <!-- Page 2 -->
+        <!-- Page 2 - UNCHANGED -->
         <div class="page">
             <div class="watermark">CLEARED</div>
             <!-- Repeat Header -->
-            <div class="header">
+            <div class="top-section">
                 <div class="ministry">
                     <div class="ministry-title">
                         MINISTRY OF WORKS, MUNICIPALITIES AFFAIRS & URBAN PLANNING
@@ -400,9 +407,6 @@
                 <div class="crest">
                     <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
                     <div class="crest-image"></div>
-                    <div class="page-number">
-                        <span id="page2-num">2</span> of <span id="total-pages2">3</span>
-                    </div>
                 </div>
 
                 <div class="ewa">
@@ -413,6 +417,11 @@
                         <div class="nap-title">N.A.P BLOCK</div>
                         <div class="nap-block">Block:450</div>
                     </div>
+                </div>
+
+                <div class="page-info">
+                    <span id="page2-num">2</span> of <span id="total-pages2">3</span><br />
+                    <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
                 </div>
             </div>
 
@@ -489,11 +498,11 @@
             <div class="safety-cert">SAFETY CERT. NO. <input type="text" value="" /></div>
         </div>
 
-        <!-- Page 3 -->
+        <!-- Page 3 - UNCHANGED -->
         <div class="page">
             <div class="watermark">CLEARED</div>
             <!-- Repeat Header -->
-            <div class="header">
+            <div class="top-section">
                 <div class="ministry">
                     <div class="ministry-title">
                         MINISTRY OF WORKS, MUNICIPALITIES AFFAIRS & URBAN PLANNING
@@ -508,9 +517,6 @@
                 <div class="crest">
                     <div class="kingdom-title">KINGDOM OF BAHRAIN</div>
                     <div class="crest-image"></div>
-                    <div class="page-number">
-                        <span id="page3-num">3</span> of <span id="total-pages3">3</span>
-                    </div>
                 </div>
 
                 <div class="ewa">
@@ -521,6 +527,11 @@
                         <div class="nap-title">N.A.P BLOCK</div>
                         <div class="nap-block">Block:450</div>
                     </div>
+                </div>
+
+                <div class="page-info">
+                    <span id="page3-num">3</span> of <span id="total-pages3">3</span><br />
+                    <div class="cpo-code">CPO-F-002<br />Rev: 04<br />May/2010</div>
                 </div>
             </div>
 
@@ -598,7 +609,7 @@
         </div>
 
         <script>
-            // Sample Data
+            // Data
             const data = {
                 wayleave_no: 'SAN / 809 / 2017',
                 nap_block: 'Block:450',
@@ -667,7 +678,7 @@
                     {
                         authority: 'WATER DISTRIBUTION DIRECTORATE',
                         observations:
-                            '1. Existing and proposed water installation details furnished.<br>2. CPO corridor allocation / approved code of practice to be followed.<br>3. All existing SV / FH Boxes / Markers to be adjusted to new levels.<br>4. Contact DPS (Water :Mr. Rajee Ibraham on 17993578 ) for existing water network prior to start of work.<br>5. Horizontal and vertical clearance should be provided as per standards whenever the conflict arises.<br>6. The vertical alignment of sewer lines should always be lower than the water lines by a minimum of 300mm.<br>7. No diversion will be made to accommodate chambers or connections.',
+                            '1. Existing and proposed water installation details furnished.<br>2. CPO corridor allocation / approved code of practice to follow.<br>3. All existing SV / FH Boxes / Markers to be adjusted to new levels.<br>4. Contact DPS (Water :Mr. Rajee Ibraham on 17993578 ) for existing water network prior to start of work.<br>5. Horizontal and vertical clearance should be provided as per standards whenever the conflict arises.<br>6. The vertical alignment of sewer lines should always be lower than the water lines by a minimum of 300mm.<br>7. No diversion will be made to accommodate chambers or connections.',
                         timestamp: '- 19/12/2017 10:23 AM',
                         approved_by: 'Ehsan BinAli Khaifi',
                         status: 'Approved',
@@ -749,11 +760,12 @@
             data.approvals.slice(8).forEach((a) => (page3Body.innerHTML += createApprovalRow(a)));
 
             function createApprovalRow(a) {
+                const obs = a.observations.replace(/\./g, '.<br>');
                 return `
         <tr>
           <td class="authority">${a.authority}</td>
-          <td class="observations">${a.observations}<br><br><em>${a.timestamp}</em></td>
-          <td class="approved-by">${a.approved_by}<br><br>${a.status}</td>
+          <td class="observations">${obs}<span class="timestamp">${a.timestamp}</span></td>
+          <td class="approved-by">${a.approved_by}<br>${a.status}</td>
         </tr>
       `;
             }
