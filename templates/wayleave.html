@@ -9,6 +9,10 @@
                 size: A4;
                 margin: 0;
             }
+            * {
+                box-sizing: border-box;
+            }
+
             body {
                 margin: 0;
                 padding: 0;
@@ -17,11 +21,11 @@
                 color: #000;
                 line-height: 1.4;
             }
+
             .page {
                 width: 210mm;
                 height: 297mm;
                 padding: 10mm 8mm;
-                box-sizing: border-box;
                 position: relative;
                 page-break-after: always;
             }
@@ -58,7 +62,6 @@
                 width: 100%;
                 position: relative;
             }
-
             .crest {
                 text-align: center;
                 flex: 1;
@@ -86,9 +89,6 @@
             .cpo-code {
                 font-size: 7pt;
                 margin-top: 10px;
-            }
-            .spacer {
-                flex: 1;
             }
 
             .bottom-row {
@@ -137,55 +137,59 @@
                 letter-spacing: 0.5px;
             }
 
-            .form-table {
+            .form-table,
+            .approvals-table {
                 width: 100%;
                 border-collapse: collapse;
                 margin-bottom: 8px;
                 font-size: 8pt;
                 table-layout: fixed;
             }
-            .form-table td {
+            .form-table colgroup col:nth-child(1) {
+                width: 25%;
+            }
+            .form-table colgroup col:nth-child(2),
+            .form-table colgroup col:nth-child(3),
+            .form-table colgroup col:nth-child(4) {
+                width: 25%;
+            }
+
+            .approvals-table colgroup col:nth-child(1) {
+                width: 28%;
+            }
+            .approvals-table colgroup col:nth-child(2) {
+                width: 50%;
+            }
+            .approvals-table colgroup col:nth-child(3) {
+                width: 22%;
+            }
+
+            .form-table td,
+            .approvals-table td,
+            .approvals-table th {
                 border: 1px solid #000;
                 padding: 5px 6px;
                 vertical-align: top;
             }
             .label {
                 background: #f5f5f5;
-                width: 25%;
                 font-weight: bold;
             }
             .wide {
-                width: 50%;
+                background: #fff;
             }
 
-            .approvals-table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 10px;
-                font-size: 8pt;
-                table-layout: fixed;
-            }
-            .approvals-table th,
-            .approvals-table td {
-                border: 1px solid #000;
-                padding: 4px 6px;
-                text-align: left;
-                vertical-align: top;
-            }
             .approvals-table th {
                 background: #f5f5f5;
                 font-weight: bold;
             }
             .auth {
-                width: 28%;
                 font-weight: bold;
             }
             .obs {
-                width: 50%;
                 line-height: 1.2;
             }
             .app {
-                width: 22%;
             }
             .ts {
                 font-style: italic;
@@ -203,34 +207,6 @@
                 color: #333;
             }
 
-            .page-bottom {
-                position: absolute;
-                bottom: 10mm;
-                left: 8mm;
-                right: 8mm;
-                font-size: 7.5pt;
-                line-height: 1.3;
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-            }
-            .page-bottom .left {
-                flex: 1;
-                text-align: left;
-            }
-            .page-bottom .right {
-                flex: 0 0 150px;
-                text-align: right;
-            }
-            .page-bottom input {
-                width: 140px;
-                border: none;
-                border-bottom: 1px solid #000;
-                background: transparent;
-                font-size: 7.5pt;
-                padding: 0 2px;
-            }
-
             .constant-footer {
                 position: fixed;
                 bottom: 0;
@@ -240,7 +216,6 @@
                 line-height: 1.3;
                 background: #fff;
                 padding: 3px 8mm;
-                box-sizing: border-box;
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-end;
@@ -395,13 +370,9 @@
                     <div class="ewa">
                         <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
                         <div class="wayleave-label">WAYLEAVE NO</div>
-                        <div class="box">
-                            <div class="wayleave-no"></div>
-                        </div>
+                        <div class="box"><div class="wayleave-no"></div></div>
                         <div class="nap-label">N.A.P BLOCK</div>
-                        <div class="box">
-                            <div class="nap-block"></div>
-                        </div>
+                        <div class="box"><div class="nap-block"></div></div>
                     </div>
                 </div>
             </div>
@@ -409,6 +380,12 @@
             <div class="app-title">APPLICATION FOR WAYLEAVE APPROVAL FOR WORKS</div>
 
             <table class="form-table">
+                <colgroup>
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                </colgroup>
                 <tr>
                     <td class="label">APPLICANT NAME</td>
                     <td colspan="3" class="wide applicant-name"></td>
@@ -434,8 +411,8 @@
                 <tr>
                     <td class="label">LOCATION OF WORKS</td>
                     <td class="wide location"></td>
-                    <td class="label" colspan="2">
-                        WIDTH & DESCRIPTION OF WORKS<br />
+                    <td colspan="2" class="label">
+                        WIDTH &amp; DESCRIPTION OF WORKS<br />
                         <div style="padding-top: 5px; font-weight: normal">
                             <span class="work-type"></span><br /><span class="work-desc"></span>
                         </div>
@@ -452,6 +429,11 @@
             </table>
 
             <table class="approvals-table">
+                <colgroup>
+                    <col />
+                    <col />
+                    <col />
+                </colgroup>
                 <thead>
                     <tr>
                         <th class="auth">AUTHORITY</th>
@@ -483,13 +465,12 @@
             const template = document.getElementById('template');
             const pagesContainer = document.getElementById('pages');
 
-            for (let i = 1; i <= 3; i++) {
-                const page = template.cloneNode(true);
-                page.id = `page${i}`;
-                page.style.display = 'block';
-                page.querySelector('.pg-num').textContent = i;
-
-                pagesContainer.appendChild(page);
+            for (let i = 1; i <= data.total_pages; i++) {
+                const p = template.cloneNode(true);
+                p.id = `page${i}`;
+                p.style.display = 'block';
+                p.querySelector('.pg-num').textContent = i;
+                pagesContainer.appendChild(p);
             }
 
             function fillPage(page) {
@@ -516,16 +497,14 @@
                 ).innerHTML = `${data.cpo_code}<br>${data.cpo_rev}<br>${data.cpo_date}`;
                 page.querySelector('.pg-total').textContent = data.total_pages;
             }
-
             document.querySelectorAll('.page').forEach(fillPage);
 
             function renderRow(a) {
-                const obs = a.obs;
                 return `<tr>
-        <td class="auth">${a.auth}</td>
-        <td class="obs">${obs}<span class="ts">${a.ts}</span></td>
-        <td class="app">${a.app}<br>${a.status}</td>
-      </tr>`;
+            <td class="auth">${a.auth}</td>
+            <td class="obs">${a.obs}<span class="ts">${a.ts}</span></td>
+            <td class="app">${a.app}<br>${a.status}</td>
+        </tr>`;
             }
 
             const approvals = data.approvals;
