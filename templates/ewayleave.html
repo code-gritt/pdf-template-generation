@@ -487,6 +487,9 @@
             const template = document.getElementById('template');
             const pagesContainer = document.getElementById('pages');
 
+            const approvalsPerPage = 4;
+            data.total_pages = Math.ceil(data.approvals.length / approvalsPerPage);
+
             for (let i = 1; i <= data.total_pages; i++) {
                 const p = template.cloneNode(true);
                 p.id = `page${i}`;
@@ -530,18 +533,14 @@
             }
 
             const approvals = data.approvals;
-            document.querySelector('#page1 .approvals-body').innerHTML = approvals
-                .slice(0, 4)
-                .map(renderRow)
-                .join('');
-            document.querySelector('#page2 .approvals-body').innerHTML = approvals
-                .slice(4, 8)
-                .map(renderRow)
-                .join('');
-            document.querySelector('#page3 .approvals-body').innerHTML = approvals
-                .slice(8)
-                .map(renderRow)
-                .join('');
+            for (let i = 1; i <= data.total_pages; i++) {
+                const start = (i - 1) * approvalsPerPage;
+                const end = start + approvalsPerPage;
+                document.querySelector(`#page${i} .approvals-body`).innerHTML = approvals
+                    .slice(start, end)
+                    .map(renderRow)
+                    .join('');
+            }
         </script>
         <script>
             document.querySelectorAll('.barcode-canvas').forEach((canvas) => {
