@@ -21,7 +21,7 @@ function sanitizeFilename(name) {
     });
 
     await cluster.task(async ({ page, data }) => {
-        const htmlPath = path.join(__dirname, 'templates', 'wayleave.html');
+        const htmlPath = path.join(__dirname, 'templates', 'ewayleave.html');
         const html = fs.readFileSync(htmlPath, 'utf8');
 
         await page.setContent(html, { waitUntil: 'networkidle0' });
