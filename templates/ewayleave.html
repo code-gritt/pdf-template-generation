@@ -263,6 +263,7 @@
                 responsible_officer: 'WAA/RMG',
                 commencement_date: '30/12/2017',
                 contractor_name: 'TERM CONTRACTOR',
+                officer_phone_number: '35100883',
                 completion_date: '31/07/2018',
                 location_of_works: 'H.NO.2184, ROAD 5060, BLOCK 450, MAQSHA',
                 work_description: '643-450-2017',
@@ -408,20 +409,26 @@
                 <tr>
                     <td class="label">ORGANIZATION REF</td>
                     <td class="org-ref"></td>
-                    <td class="label">DATE OF APPLICATION</td>
+                    <td class="label">APPLICATION DATE</td>
                     <td class="app-date"></td>
                 </tr>
                 <tr>
                     <td class="label">RESPONSIBLE OFFICER</td>
                     <td class="resp-officer"></td>
-                    <td class="label">DATE OF COMMENCEMENT</td>
+                    <td class="label">PLANNED START DATE</td>
                     <td class="comm-date"></td>
                 </tr>
                 <tr>
                     <td class="label">CONTRACTOR</td>
                     <td class="contractor"></td>
-                    <td class="label">EXPECTED COMPLETION DATE</td>
+                    <td class="label">PLANNED FINISH DATE</td>
                     <td class="comp-date"></td>
+                </tr>
+                <tr>
+                    <td class="label">CONTRACTOR</td>
+                    <td class="contractor"></td>
+                    <td class="label">OFFICER PHONE NUMBER</td>
+                    <td class="officer_phone_number"></td>
                 </tr>
                 <tr>
                     <td class="label">LOCATION OF WORKS</td>
@@ -431,6 +438,13 @@
                         <div style="padding-top: 5px; font-weight: normal">
                             <span class="work-type"></span><br /><span class="work-desc"></span>
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">WIDTH &amp; DESCRIPTION OF WORKS</td>
+                    <td colspan="3" class="work-type"></td>
+                    <td colspan="3" class="label">
+                        <span class="work-type"></span><br /><span class="work-desc"></span>
                     </td>
                 </tr>
                 <tr>
@@ -498,6 +512,7 @@
                 page.querySelector('.resp-officer').textContent = data.responsible_officer;
                 page.querySelector('.comm-date').textContent = data.commencement_date;
                 page.querySelector('.contractor').textContent = data.contractor_name;
+                page.querySelector('.officer_phone_number').textContent = data.officer_phone_number;
                 page.querySelector('.comp-date').textContent = data.completion_date;
                 page.querySelector('.location').textContent = data.location_of_works;
                 page.querySelector('.work-type').textContent = data.work_type;
