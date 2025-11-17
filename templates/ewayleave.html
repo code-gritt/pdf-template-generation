@@ -99,6 +99,8 @@
             .ministry,
             .ewa {
                 width: 35%;
+                margin-top: 8px;
+                position: relative;
             }
             .ministry-title,
             .ewa-title {
@@ -369,14 +371,14 @@
                     </div>
                     <div class="ewa">
                         <div class="ewa-title">ELECTRICITY & WATER AUTHORITY</div>
+
+                        <div style="margin: 6px 0 2px 0">
+                            <canvas class="barcode-canvas"></canvas>
+                        </div>
                         <div class="nap-label">BLOCKS</div>
                         <div class="box"><div class="nap-block"></div></div>
                     </div>
                 </div>
-            </div>
-
-            <div style="position: absolute; top: 10mm; right: 15mm; z-index: 10">
-                <canvas class="barcode-canvas"></canvas>
             </div>
 
             <div class="app-title">APPLICATION FOR WAYLEAVE APPROVAL FOR WORKS</div>
@@ -527,8 +529,8 @@
                 bwipjs.toCanvas(canvas, {
                     bcid: 'code128',
                     text: 'SAN / 809 / 2017',
-                    scale: 2,
-                    height: 8,
+                    scale: 1,
+                    height: 6,
                     includetext: true,
                     textxalign: 'center',
                 });
